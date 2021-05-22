@@ -4,36 +4,33 @@ $("#alphaTab").alphaTab({
 });
 api.playedBeatChanged.on((beat) => {
   $(".learn").html("");
-  let C = "Do";
-  let D = "Re";
-  let E = "Mi";
-  let F = "Fa";
-  let G = "Son";
-  let A = "La";
-  let B = "Si";
+  // prettier-ignore
+  let basicNotes = {C: "Do",D: "Re",E: "Mi",F: "Fa",G: "Son",A: "La",B: "Si",};
   // prettier-ignore
   let notes = [
-    E,F,F,G,G,A,A,B,C,C,D,D,E,F,F,G,G,A,A,B,C,C,D, //1
-    A,A,B,C,C,D,D,E,F,F,G,G,A,A,B,C,C,D,D,E,F,F,G, //2
-    D,D,E,F,F,G,G,A,A,B,C,C,D,D,E,F,F,G,G,A,B,B,C, //3
-    G,G,A,A,B,C,C,D,D,E,F,F,G,G,A,A,B,C,C,D,D,E,F, //4
-    B,C,C,D,D,E,F,F,G,G,A,A,B,C,C,D,D,E,F,F,G,G,A, //5
-    E,F,F,G,G,A,A,B,C,C,D,D,E,F,F,G,G,A,A,B,C,C,D, //6
+    'E2' ,'F2' ,'F+2','G2' ,"G+2",'A2' ,'A+2','B2' ,'C3' ,'C+3','D3' ,'D+3','E3' ,'F3' ,'F+3','G3' ,'G+3','A3' ,'A+3','B3' ,'C4' ,'C+4','D4', //String 1
+    'A2 ','A+2','B2' ,'C3' ,'C+3','D3' ,'D+3','E3' ,'F3' ,'F+3','G3' ,'G+3','A3' ,'A+3','B3' ,'C4' ,'C+4','D4' ,'D+4','E4' ,'F4' ,'F+4','G4', //String 2
+    'D3' ,'D+3','E3' ,'F3' ,'F+3','G3' ,'G+3','A3' ,'A+3','B3' ,'C4' ,'C+4','D4' ,'D+4','E4' ,'F4' ,'F+4','G4' ,'G+4','A4' ,'A+4','B4' ,'C5', //String 3
+    'G3' ,'G+3','A3' ,'A+3','B3' ,'C4' ,'C+4','D4' ,'D+4','E4' ,'F4' ,'F+4','G4' ,'G+4','A4' ,'A+4','B4' ,'C5' ,'C+5','D5' ,'D+5','E5' ,'F5', //String 4
+    'B3' ,'C4' ,'C+4','D4' ,'D+4','E4' ,'F4' ,'F+4','G4' ,'G+4','A4' ,'A+4','B4' ,'C5' ,'C+5','D5' ,'D+5','E5' ,'F5' ,'F+5','G5' ,'G+5','A5', //String 5
+    'E4' ,'F4' ,'F+4','G4' ,'G+4','A4' ,'A+4','B4' ,'C5' ,'C+5','D5' ,'D+5','E5' ,'F5' ,'F+5','G5' ,'G+5','A5' ,'A+5','B5' ,'C6' ,'C+6','D6', //String 6
     ];
   let text = "";
-  console.log(beat.notes);
+  // console.log("fret:", beat.notes[0].fret, "string:", beat.notes[0].string);
   for (let i = 0; i < beat.notes.length; i++) {
     let index = (beat.notes[i].string - 1) * 23 + beat.notes[i].fret;
     let link = {
-      Do: "./finger notes-20210518T071907Z-001/finger notes/C4.png",
-      Re: "./finger notes-20210518T071907Z-001/finger notes/D4.png",
-      Mi: "./finger notes-20210518T071907Z-001/finger notes/E4.png",
-      Fa: "./finger notes-20210518T071907Z-001/finger notes/F4.png",
-      Son: "./finger notes-20210518T071907Z-001/finger notes/G4.png",
-      La: "./finger notes-20210518T071907Z-001/finger notes/A3.png",
-      Si: "./finger notes-20210518T071907Z-001/finger notes/B3.png",
+      C4: "./finger notes-20210518T071907Z-001/finger notes/C4.png",
+      D4: "./finger notes-20210518T071907Z-001/finger notes/D4.png",
+      E4: "./finger notes-20210518T071907Z-001/finger notes/E4.png",
+      F4: "./finger notes-20210518T071907Z-001/finger notes/F4.png",
+      G4: "./finger notes-20210518T071907Z-001/finger notes/G4.png",
+      G3: "./finger notes-20210518T071907Z-001/finger notes/G3.png",
+      A3: "./finger notes-20210518T071907Z-001/finger notes/A3.png",
+      B3: "./finger notes-20210518T071907Z-001/finger notes/B3.png",
     };
-    text = text + " " + notes[index];
+    text =
+      text + " " + notes[index] + "-" + basicNotes[notes[index].slice(0, 1)];
     let img = `
     <img src="${link[notes[index]]}" alt="" >
     `;

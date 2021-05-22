@@ -4,7 +4,7 @@ const main = wrapper.querySelector(".at-main");
 
 // initialize alphatab
 const settings = {
-  file: "/canon.gp",
+  file: "/Happy-Birthday-To-You-easy.gpx",
   player: {
     enablePlayer: true,
     soundFont:
