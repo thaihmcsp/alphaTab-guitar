@@ -21,18 +21,29 @@
         <div class="at-viewport">
           <div class="at-main" id="alphaTab"></div>    
         </div>
-        <div class="learnAdd">
-          <div class="learn"></div>
+        
+      </div>
+
+      <div class="learnAdd">
+        <div class="learn"></div>
+        <div class="info">
+          <div class="at-song-info">
+            <div class="at-song-title"></div>
+            <div class="at-song-artist"></div>
+            <div class="at-song-tempo"></div>
+          </div>
           <div class="show"></div>
         </div>
       </div>
+
       <div class="at-controls">
         <div class="at-controls-left">
+          <!-- chọn bài -->
           <a class="btn at-open" data-toggle="tooltip" data-placement="top" title="" data-original-title="Open File">
-            <!-- <i class="fas fa-folder-open" aria-hidden="true"> -->
-              <select name="" id="music" class="fas fa-folder-open">
-              </select>
-            <!-- </i> -->
+            <i class="fas fa-folder-open" aria-hidden="true">
+              <!-- <select name="" id="music" class="fas fa-folder-open">
+              </select> -->
+            </i>
           </a>
           <a class="btn at-player-stop disabled">
             <i class="fas fa-step-backward"></i>
@@ -54,10 +65,10 @@
             </select>
           </div>
           <span class="at-player-progress">0%</span>
-          <div class="at-song-info">
+          <!-- <div class="at-song-info">
             <span class="at-song-title"></span> -
             <span class="at-song-artist"></span>
-          </div>
+          </div> -->
           <div class="at-song-position">00:00 / 00:00</div>
         </div>
 
@@ -90,8 +101,8 @@
           </div>
           <div class="at-layout">
             <select>
-              <option value="horizontal">Horizontal</option>
               <option value="page" selected>Page</option>
+              <option value="horizontal" selected="selected">Horizontal</option>
             </select>
           </div>
         </div>

@@ -5,6 +5,11 @@ const main = wrapper.querySelector(".at-main");
 // initialize alphatab
 const settings = {
   file: "./music/Happy-Birthday-To-You-easy.gpx",
+  // file: "./music/canon.gp",
+
+  display: {
+    layoutMode: "horizontal",
+  },
   player: {
     enablePlayer: true,
     soundFont:
@@ -52,6 +57,9 @@ function play() {
     // collect tracks being rendered
     const tracks = new Map();
     api.tracks.forEach((t) => {
+      // console.log(t.staves[0].bars[2].voices[0].beats[0].lyrics);
+      // console.log(t.staves[0]);
+
       tracks.set(t.index, t);
     });
 
@@ -71,6 +79,7 @@ function play() {
   api.scoreLoaded.on((score) => {
     wrapper.querySelector(".at-song-title").innerText = score.title;
     wrapper.querySelector(".at-song-artist").innerText = score.artist;
+    wrapper.querySelector(".at-song-tempo").innerText = `Tempo: ${score.tempo}`;
   });
 
   const countIn = wrapper.querySelector(".at-controls .at-count-in");
@@ -110,7 +119,6 @@ function play() {
     api.updateSettings();
     api.render();
   };
-  api.settings.display.layoutMode = alphaTab.LayoutMode.Horizontal;
 
   const layout = wrapper.querySelector(".at-controls .at-layout select");
   layout.onchange = () => {
@@ -173,6 +181,7 @@ function play() {
     let seconds = milliseconds / 1000;
     const minutes = (seconds / 60) | 0;
     seconds = (seconds - minutes * 60) | 0;
+
     return (
       String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0")
     );
@@ -193,28 +202,3 @@ function play() {
 }
 
 play();
-
-var files = [
-  "./music/Happy-Birthday-To-You-easy.gpx",
-  "./music/canon.gp",
-  "./music/21gun.gp5",
-];
-
-for (let i = 0; i < files.length; i++) {
-  console.log(i);
-  let option = `
-  <option value="${files[i]}">
-    ${files[i].slice(8, files[i].length)}
-  </option>
-  `;
-  $("#music").append(option);
-}
-
-$("#music").change(() => {
-  api.settings.core.file = $("#music").val();
-  api.updateSettings();
-  play();
-  // api.render();
-  // $("#alphaTab").alphaTab("UpdateSettings");
-  // $("#alphaTab").alphaTab("render");
-});

@@ -9,7 +9,7 @@ body {
 }
 
 .at-wrap {
-  width: 90vw;
+  width: 70vw;
   height: 90vh;
   margin: 0 auto;
   border: 1px solid rgba(0, 0, 0, 0.12);
@@ -48,7 +48,7 @@ body {
 }
 
 .at-viewport {
-  overflow-y: auto;
+  overflow: auto;
   position: absolute;
   top: 0;
   left: 70px;
@@ -236,35 +236,55 @@ body {
   fill: #0078ff;
   stroke: #0078ff;
 }
-.show {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  width: 50%;
-  text-align: center;
-}
-.show span{
-  display: inline-block;
-  margin-right:0.25em
-}
-.learn {
-  width: 50%;
-  height: 100px;
+.info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 60%;
+  text-align: center;
+}
+.info span {
+  display: inline-block;
+  margin-right: 0.25em;
+  font-size: 16px;
+}
+.learn {
+  width: 40%;
+  height: 120px;
+  display: flex;
+  justify-content: flex-end;
 }
 .learnAdd {
+  color: white;
+  background: #436d9d;
   width: 100%;
-  position: absolute;
-  bottom: 0px;
   z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #f7f7f7;
 }
 .learn img {
-  height: 100%;
+  max-height: 100%;
+  width: 100%;
+  /* object-fit: contain; */
+}
+.at-song-info div {
+  text-align: center;
+  height: 20px;
+}
+.at-song-title {
+  font-size: 24px;
+  height: 30px !important;
+}
+.at-song-artist {
+  font-style: italic;
+}
+.at-song-tempo {
+  font-weight: 700;
+}
+.show {
+  height: 20px;
+  color: white;
+  overflow-y: auto;
 }

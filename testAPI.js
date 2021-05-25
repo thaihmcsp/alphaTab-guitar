@@ -1,10 +1,10 @@
-// const alpha = new alphaTab.AlphaTabApi(document.querySelector("#alphaTab"));
 $("#alphaTab").alphaTab({
   scale: 1.5,
 });
+let id = 0;
+
 api.playedBeatChanged.on((beat) => {
   $(".learn").html("");
-  $(".show").html("");
   // prettier-ignore
   let notes = [
     'E2' ,'F2' ,'F#2','G2' ,"G#2",'A2' ,'A#2','B2' ,'C3' ,'C#3','D3' ,'D#3','E3' ,'F3' ,'F#3','G3' ,'G#3','A3' ,'A#3','B3' ,'C4' ,'C#4','D4', //String 1
@@ -26,7 +26,7 @@ api.playedBeatChanged.on((beat) => {
     A3: "./finger notes-20210518T071907Z-001/finger notes/A3.png",
     B3: "./finger notes-20210518T071907Z-001/finger notes/B3.png",
   };
-  let beatIndex = beat.index;
+  // let beatIndex = beat.index;
   for (let i = 0; i < beat.notes.length; i++) {
     let index = (beat.notes[i].string - 1) * 23 + beat.notes[i].fret;
     let img = `
@@ -35,19 +35,13 @@ api.playedBeatChanged.on((beat) => {
     $(".learn").append(img);
   }
 
-  for (let i = 0; i < beat.voice.beats.length; i++) {
-    let style = i <= beatIndex ? "red" : "black";
-    console.log(beat.voice.beats[i]);
-    text = `<span style='color:${style}'> ${beat.voice.beats[i].lyrics[0]} </span>`;
-    $(".show").append(text);
+  if (beat.lyrics) {
+    id++;
+    $(`#${id}`).css("color", "white");
   }
 });
 
-api.playerFinished.on((args) => {
-  console.log("ok");
-  $(".show").html("");
-});
-
+//change speed
 $("#speed").val("1");
 $("#speed").change(() => {
   var playbackSpeed = $("#speed").val();
